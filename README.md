@@ -76,7 +76,9 @@ Kts Version
 
 
 ## Screen Sample
-![Sample](https://github.com/hypersoftdev/ColorPicker/blob/master/screens/screengif.gif?raw=true)
+
+![Screen1](https://github.com/user-attachments/assets/1ddc4201-ea1b-4142-80de-a6f95d32630f)
+
 
 # Acknowledgements
 
