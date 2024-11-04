@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="RoundedImageView">
+        <attr name="cornerRadius" format="dimension"/>
+        <attr name="strokeColor" format="color"/>
+        <attr name="strokeWidth" format="dimension"/>
+        <attr name="strokeGradientStartColor" format="color"/>
+        <attr name="strokeGradientEndColor" format="color"/>
+        <attr name="selectionIcon" format="reference"/>
+        <attr name="selectionIconSize" format="dimension"/>
+        <attr name="selectionIconPosition" format="enum">
+            <enum name="top_left" value="0"/>
+            <enum name="top_right" value="1"/>
+            <enum name="bottom_left" value="2"/>
+            <enum name="bottom_right" value="3"/>
+        </attr>
+        <attr name="iconPadding" format="dimension"/>
+
+    </declare-styleable>
+</resources>
