@@ -1,4 +1,5 @@
-[![](https://jitpack.io/v/hypersoftdev/DiffSlider.svg)](https://jitpack.io/#hypersoftdev/DiffSlider)
+[![](https://jitpack.io/v/hypersoftdev/EasyImageView.svg)](https://jitpack.io/#hypersoftdev/EasyImageView)
+
 
 # EasyImageView
 
@@ -18,7 +19,8 @@ repositories {
 
 ### Step B: Add Dependencies
 
-Include the **EasyImageView** library in your **app-level** `build.gradle` file. Replace `x.x.x` with the latest version: [![](https://jitpack.io/v/hypersoftdev/DiffSlider.svg)](https://jitpack.io/#hypersoftdev/DiffSlider)
+Include the **EasyImageView** library in your **app-level** `build.gradle` file. Replace `x.x.x` with the latest version: [![](https://jitpack.io/v/hypersoftdev/EasyImageView.svg)](https://jitpack.io/#hypersoftdev/EasyImageView)
+
 
 Groovy Version
 ```
