@@ -250,13 +250,17 @@ class EasyImageView @JvmOverloads constructor(
         return bitmap
     }
 
-    fun saveImageToGallery() {
+    fun saveImageToGallery(successMessage:String?,errorMessage:String?,imageName:String?) {
         val bitmap = getImageBitmap()
-        saveBitmapToGallery(bitmap)
+        saveBitmapToGallery(bitmap,successMessage,errorMessage,imageName)
     }
 
-    private fun saveBitmapToGallery(bitmap: Bitmap?) {
-        val filename = "IMG_${SimpleDateFormat("yyyyMMdd_HHmmss", Locale.US).format(Date())}.png"
+    private fun saveBitmapToGallery(bitmap: Bitmap?,successMessage:String?,errorMessage:String?,imageName:String?) {
+        val filename = imageName?.let {
+            "${it}.png"
+        }?:run {
+            "IMG_${SimpleDateFormat("yyyyMMdd_HHmmss", Locale.US).format(Date())}.png"
+        }
         var fos: OutputStream? = null
 
         try {
@@ -278,21 +282,20 @@ class EasyImageView @JvmOverloads constructor(
             fos?.let {
                 bitmap?.compress(Bitmap.CompressFormat.PNG, 100, fos) ?: run {
                     post {
-                        Toast.makeText(context, "Failed to save image", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, successMessage?:"Image is saved in gallery.", Toast.LENGTH_SHORT).show()
                     }
                 }
-                post {
-                    Toast.makeText(context, "Image saved to gallery", Toast.LENGTH_SHORT).show()
-                }
+
             } ?: run {
                 post {
-                    Toast.makeText(context, "Failed to save image", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, errorMessage?:"Failed to save image", Toast.LENGTH_SHORT).show()
                 }
             }
         } catch (e: Exception) {
             e.printStackTrace()
             post {
-                Toast.makeText(context, "Failed to save image", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, errorMessage?:"Failed to save image", Toast.LENGTH_SHORT).show()
+
             }
         } finally {
             fos?.close()

@@ -76,6 +76,17 @@ Kts Version
 | `iconPadding `             | dimension | Select icon padding.                |
 
 
+## Helper Methods
+
+### getImageBitmap(): Bitmap?
+
+Call this method to get Bitmap of the imageview.
+
+### saveImageToGallery(successMessage:String?,errorMessage:String?,imageName:String?)
+
+Call this method to save image in gallery.
+
+
 ## Screen Sample
 
 ![Screen1](https://github.com/user-attachments/assets/1ddc4201-ea1b-4142-80de-a6f95d32630f)
