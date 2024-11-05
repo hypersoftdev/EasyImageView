@@ -1,6 +1,5 @@
 package com.hypersoft.easyimageview
 
-
 import android.content.ContentValues
 import android.content.Context
 import android.graphics.Bitmap
@@ -38,11 +37,11 @@ class EasyImageView @JvmOverloads constructor(
     private var strokeWidth = 0f
     private var strokeGradientStartColor = Color.TRANSPARENT
     private var strokeGradientEndColor = Color.TRANSPARENT
+    private var strokeGradientAngle = 0f
     private var selectionIcon: Drawable? = null
     private var selectionIconSize = 0f
     private var selectionIconPosition = Position.TOP_RIGHT
     private var iconPadding = 0f
-
 
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val path = Path()
@@ -59,11 +58,12 @@ class EasyImageView @JvmOverloads constructor(
                     getColor(R.styleable.RoundedImageView_strokeGradientStartColor, Color.TRANSPARENT),
                     getColor(R.styleable.RoundedImageView_strokeGradientEndColor, Color.TRANSPARENT)
                 )
+                setStrokeGradientAngle(getFloat(R.styleable.RoundedImageView_strokeGradientAngle, 0f))
 
                 setSelectionIcon(
                     getDrawable(R.styleable.RoundedImageView_selectionIcon),
                     getDimension(R.styleable.RoundedImageView_selectionIconSize, 24f),
-                    Position.values()[getInt(R.styleable.RoundedImageView_selectionIconPosition, 1)],
+                    Position.entries[getInt(R.styleable.RoundedImageView_selectionIconPosition, 1)],
                     getDimension(R.styleable.RoundedImageView_iconPadding, 8f)
                 )
 
@@ -102,7 +102,7 @@ class EasyImageView @JvmOverloads constructor(
     }
 
     private fun calculateIconPosition(iconSize: Int): Pair<Int, Int> {
-        val offset = (strokeWidth + iconPadding).toInt() // Offset to avoid overlap with stroke
+        val offset = (strokeWidth + iconPadding).toInt()
         return when (selectionIconPosition) {
             Position.TOP_LEFT -> Pair(paddingLeft + offset, paddingTop + offset)
             Position.TOP_RIGHT -> Pair(width - paddingRight - iconSize - offset, paddingTop + offset)
@@ -135,15 +135,7 @@ class EasyImageView @JvmOverloads constructor(
     // Returns a shader for the stroke, setting up a gradient or solid color based on the colors provided
     private fun getStrokeShader(): Shader? {
         return if (strokeGradientStartColor != Color.TRANSPARENT && strokeGradientEndColor != Color.TRANSPARENT) {
-            if (gradientShader == null) {
-                gradientShader = LinearGradient(
-                    0f, 0f, width.toFloat(), height.toFloat(),
-                    strokeGradientStartColor,
-                    strokeGradientEndColor,
-                    Shader.TileMode.CLAMP
-                )
-            }
-            gradientShader
+            createGradientShader()
         } else {
             paint.color = if (strokeGradientStartColor != Color.TRANSPARENT) {
                 strokeGradientStartColor
@@ -154,6 +146,33 @@ class EasyImageView @JvmOverloads constructor(
             }
             null
         }
+    }
+
+    // Creates a new gradient shader based on the current properties
+    private fun createGradientShader(): Shader? {
+        val (x0, y0, x1, y1) = calculateGradientPoints()
+        gradientShader = LinearGradient(
+            x0, y0, x1, y1,
+            strokeGradientStartColor,
+            strokeGradientEndColor,
+            Shader.TileMode.CLAMP
+        )
+        return gradientShader
+    }
+
+    // Calculate the gradient start and end points based on the angle
+    private fun calculateGradientPoints(): FloatArray {
+        val radians = Math.toRadians(strokeGradientAngle.toDouble())
+        val centerX = width / 2f
+        val centerY = height / 2f
+        val radius = Math.hypot(width.toDouble(), height.toDouble()).toFloat() / 2f
+
+        val x0 = (centerX - radius * Math.cos(radians)).toFloat()
+        val y0 = (centerY - radius * Math.sin(radians)).toFloat()
+        val x1 = (centerX + radius * Math.cos(radians)).toFloat()
+        val y1 = (centerY + radius * Math.sin(radians)).toFloat()
+
+        return floatArrayOf(x0, y0, x1, y1)
     }
 
     // Programmatically update properties
@@ -179,6 +198,12 @@ class EasyImageView @JvmOverloads constructor(
         invalidateView()
     }
 
+    fun setStrokeGradientAngle(angle: Float) {
+        strokeGradientAngle = angle
+        gradientShader = null // Reset shader to force recalculation
+        invalidateView()
+    }
+
     private fun setSelectionIcon(drawable: Drawable?, size: Float = 24f, position: Position = Position.TOP_RIGHT, padding: Float = 4f) {
         selectionIcon = drawable
         selectionIconSize = size
@@ -191,7 +216,6 @@ class EasyImageView @JvmOverloads constructor(
         selectionIcon = ContextCompat.getDrawable(context, resId)
         invalidateView()
     }
-
 
     // Method to get a bitmap of the original image content without stroke, radius, or icon
     fun getImageBitmap(): Bitmap? {
@@ -226,7 +250,6 @@ class EasyImageView @JvmOverloads constructor(
         return bitmap
     }
 
-
     fun saveImageToGallery() {
         val bitmap = getImageBitmap()
         saveBitmapToGallery(bitmap)
@@ -253,15 +276,15 @@ class EasyImageView @JvmOverloads constructor(
             }
 
             fos?.let {
-                bitmap?.compress(Bitmap.CompressFormat.PNG, 100, fos)?:run {
-                    post{
+                bitmap?.compress(Bitmap.CompressFormat.PNG, 100, fos) ?: run {
+                    post {
                         Toast.makeText(context, "Failed to save image", Toast.LENGTH_SHORT).show()
                     }
                 }
                 post {
                     Toast.makeText(context, "Image saved to gallery", Toast.LENGTH_SHORT).show()
                 }
-            }?:run{
+            } ?: run {
                 post {
                     Toast.makeText(context, "Failed to save image", Toast.LENGTH_SHORT).show()
                 }
@@ -283,7 +306,6 @@ class EasyImageView @JvmOverloads constructor(
     }
 
     enum class Position {
-        TOP_LEFT, TOP_RIGHT, BOTTOM_LEFT, BOTTOM_RIGHT
+        TOP_RIGHT, TOP_LEFT, BOTTOM_LEFT, BOTTOM_RIGHT
     }
-
 }

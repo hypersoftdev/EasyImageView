@@ -6,6 +6,7 @@
         <attr name="strokeWidth" format="dimension"/>
         <attr name="strokeGradientStartColor" format="color"/>
         <attr name="strokeGradientEndColor" format="color"/>
+        <attr name="strokeGradientAngle" format="float"/>
         <attr name="selectionIcon" format="reference"/>
         <attr name="selectionIconSize" format="dimension"/>
         <attr name="selectionIconPosition" format="enum">
