@@ -69,6 +69,7 @@ Kts Version
 | `strokeColor`              | color     | Set stroke color (solid).           |
 | `strokeGradientStartColor` | color     | Set stroke start color              |
 | `strokeGradientEndColor`   | color     | Set stroke end color                |
+| `strokeGradientAngle`      | float     | Set stroke gradient angle           |
 | `selectionIcon `           | reference | Set additional icon over the image. |
 | `selectionIconSize`        | dimension | Set overlay icon size.              |
 | `selectionIconPosition `   | enum      | Select icon position over image.    |
