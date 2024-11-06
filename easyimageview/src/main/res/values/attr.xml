@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="RoundedImageView">
-        <attr name="cornerRadius" format="dimension"/>
+    <declare-styleable name="EasyImageView">
+
+
+        <attr name="cornerRadiusTopLeft" format="dimension"/>
+        <attr name="cornerRadiusTopRight" format="dimension"/>
+        <attr name="cornerRadiusBottomRight" format="dimension"/>
+        <attr name="cornerRadiusBottomLeft" format="dimension"/>
+
         <attr name="strokeColor" format="color"/>
         <attr name="strokeWidth" format="dimension"/>
+
+
         <attr name="strokeGradientStartColor" format="color"/>
         <attr name="strokeGradientEndColor" format="color"/>
         <attr name="strokeGradientAngle" format="float"/>
@@ -16,6 +24,14 @@
             <enum name="bottom_right" value="3"/>
         </attr>
         <attr name="iconPadding" format="dimension"/>
+
+        <attr name="flipHorizontally" format="boolean"/>
+        <attr name="flipVertically" format="boolean"/>
+
+        <attr name="enableRippleEffect" format="boolean"/>
+
+
+
 
     </declare-styleable>
 </resources>

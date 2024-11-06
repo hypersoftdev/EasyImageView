@@ -9,7 +9,6 @@
     tools:context=".MainActivity">
 
 
-
     <com.hypersoft.easyimageview.EasyImageView
         android:layout_width="match_parent"
         android:layout_height="200dp"
@@ -20,7 +19,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:cornerRadius="10dp"
-        app:strokeWidth="5dp"
+        app:strokeWidth="15dp"
+        app:cornerRadiusTopLeft="20dp"
+        app:cornerRadiusBottomRight="20dp"
         app:strokeColor="@color/black"
         app:strokeGradientStartColor="@color/green"
         app:strokeGradientEndColor="@color/red"
@@ -29,8 +30,13 @@
         app:selectionIconSize="25dp"
         app:selectionIconPosition="top_right"
         app:iconPadding="3dp"
+        app:flipVertically="true"
+        app:flipHorizontally="true"
         android:layout_marginHorizontal="20dp"
+        app:enableRippleEffect="true"
+        app:cornerRadiusTopRight="10dp"
         />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

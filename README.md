@@ -62,18 +62,24 @@ Kts Version
 
 ## Attribute Summary
 
-| Attribute                  | Format    | Description                         |
-|----------------------------|-----------|-------------------------------------|
-| `cornerRadius `            | dimension | Set corner radius of the imageview. |
-| `strokeWidth`              | dimension | Set width of the stroke.            |
-| `strokeColor`              | color     | Set stroke color (solid).           |
-| `strokeGradientStartColor` | color     | Set stroke start color              |
-| `strokeGradientEndColor`   | color     | Set stroke end color                |
-| `strokeGradientAngle`      | float     | Set stroke gradient angle           |
-| `selectionIcon `           | reference | Set additional icon over the image. |
-| `selectionIconSize`        | dimension | Set overlay icon size.              |
-| `selectionIconPosition `   | enum      | Select icon position over image.    |
-| `iconPadding `             | dimension | Select icon padding.                |
+| Attribute                  | Format    | Description                                      |
+|----------------------------|-----------|--------------------------------------------------|
+| `cornerRadiusTopLeft `     | dimension | Set top left corner radius of the imageview.     |
+| `cornerRadiusTopRight `    | dimension | Set top right corner radius of the imageview.    |
+| `cornerRadiusBottomLeft `  | dimension | Set bottom left corner radius of the imageview.  |
+| `cornerRadiusBottomRight ` | dimension | Set bottom right corner radius of the imageview. |
+| `strokeWidth`              | dimension | Set width of the stroke.                         |
+| `strokeColor`              | color     | Set stroke color (solid).                        |
+| `strokeGradientStartColor` | color     | Set stroke start color                           |
+| `strokeGradientEndColor`   | color     | Set stroke end color                             |
+| `strokeGradientAngle`      | float     | Set stroke gradient angle                        |
+| `selectionIcon `           | reference | Set additional icon over the image.              |
+| `selectionIconSize`        | dimension | Set overlay icon size.                           |
+| `selectionIconPosition `   | enum      | Select icon position over image.                 |
+| `iconPadding `             | dimension | Select icon padding.                             |
+| `flipHorizontally `        | boolean   | Flip the view horizontally default ( false )     |
+| `flipVertically `          | boolean   | Flip the view vertically default ( false )       |
+| `enableRippleEffect `      | boolean   | Enable ripple effect on click default ( false )  |
 
 
 ## Helper Methods
