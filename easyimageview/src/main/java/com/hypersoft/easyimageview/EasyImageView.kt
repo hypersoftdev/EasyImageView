@@ -64,10 +64,10 @@ class EasyImageView @JvmOverloads constructor(
         context.theme.obtainStyledAttributes(attrs, R.styleable.EasyImageView, 0, 0).apply {
             try {
                 setCornerRadii(
-                    getDimension(R.styleable.EasyImageView_cornerRadiusTopLeft, 0f),
-                    getDimension(R.styleable.EasyImageView_cornerRadiusTopRight, 0f),
-                    getDimension(R.styleable.EasyImageView_cornerRadiusBottomRight, 0f),
-                    getDimension(R.styleable.EasyImageView_cornerRadiusBottomLeft, 0f)
+                    getFloat(R.styleable.EasyImageView_cornerRadiusTopLeft, 0f),
+                    getFloat(R.styleable.EasyImageView_cornerRadiusTopRight, 0f),
+                    getFloat(R.styleable.EasyImageView_cornerRadiusBottomRight, 0f),
+                    getFloat(R.styleable.EasyImageView_cornerRadiusBottomLeft, 0f)
                 )
                 setStrokeColor(getColor(R.styleable.EasyImageView_strokeColor, Color.BLACK))
                 setStrokeWidth(getDimension(R.styleable.EasyImageView_strokeWidth, 0f))
@@ -92,9 +92,6 @@ class EasyImageView @JvmOverloads constructor(
             } finally {
                 recycle()
             }
-
-            clipToOutline = true
-            outlineProvider = CustomOutlineProvider()
         }
     }
 
@@ -371,9 +368,4 @@ class EasyImageView @JvmOverloads constructor(
     }
 
 
-    private inner class CustomOutlineProvider : ViewOutlineProvider() {
-        override fun getOutline(view: View, outline: Outline) {
-            outline.setRoundRect(0, 0, width, height, cornerRadii.maxOrNull() ?: 0f)
-        }
-    }
 }

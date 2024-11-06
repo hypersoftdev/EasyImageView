@@ -3,10 +3,10 @@
     <declare-styleable name="EasyImageView">
 
 
-        <attr name="cornerRadiusTopLeft" format="dimension"/>
-        <attr name="cornerRadiusTopRight" format="dimension"/>
-        <attr name="cornerRadiusBottomRight" format="dimension"/>
-        <attr name="cornerRadiusBottomLeft" format="dimension"/>
+        <attr name="cornerRadiusTopLeft" format="float"/>
+        <attr name="cornerRadiusTopRight" format="float"/>
+        <attr name="cornerRadiusBottomRight" format="float"/>
+        <attr name="cornerRadiusBottomLeft" format="float"/>
 
         <attr name="strokeColor" format="color"/>
         <attr name="strokeWidth" format="dimension"/>
