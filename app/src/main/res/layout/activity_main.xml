@@ -15,22 +15,11 @@
         android:src="@drawable/background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginHorizontal="20dp"
-        app:strokeWidth="15dp"
-        app:strokeColor="@color/black"
-        app:strokeGradientAngle="90"
-        android:background="@android:color/transparent"
-        app:selectionIcon="@drawable/ic_gallery_unselected"
-        app:selectionIconSize="25dp"
-        app:selectionIconPosition="top_right"
-        app:iconPadding="7dp"
-        app:flipVertically="true"
         app:flipHorizontally="true"
-        app:enableRippleEffect="true"
-        app:cornerRadiusTopRight="360"
+        app:cornerRadiusTopLeft="360"
         />
 
 

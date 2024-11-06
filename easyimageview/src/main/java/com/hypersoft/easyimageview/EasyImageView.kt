@@ -6,6 +6,7 @@ import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.LinearGradient
+import android.graphics.Matrix
 import android.graphics.Outline
 import android.graphics.Paint
 import android.graphics.Path
@@ -98,6 +99,7 @@ class EasyImageView @JvmOverloads constructor(
     override fun onDraw(canvas: Canvas) {
         updateRectF()
 
+        val matrix = Matrix()
         if (isFlippedHorizontally) {
             matrix.postScale(-1f, 1f, (width / 2).toFloat(), (height / 2).toFloat())
         }
