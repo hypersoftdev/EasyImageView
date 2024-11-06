@@ -64,10 +64,10 @@ Kts Version
 
 | Attribute                  | Format    | Description                                      |
 |----------------------------|-----------|--------------------------------------------------|
-| `cornerRadiusTopLeft `     | dimension | Set top left corner radius of the imageview.     |
-| `cornerRadiusTopRight `    | dimension | Set top right corner radius of the imageview.    |
-| `cornerRadiusBottomLeft `  | dimension | Set bottom left corner radius of the imageview.  |
-| `cornerRadiusBottomRight ` | dimension | Set bottom right corner radius of the imageview. |
+| `cornerRadiusTopLeft `     | float     | Set top left corner radius of the imageview.     |
+| `cornerRadiusTopRight `    | float     | Set top right corner radius of the imageview.    |
+| `cornerRadiusBottomLeft `  | float     | Set bottom left corner radius of the imageview.  |
+| `cornerRadiusBottomRight ` | float     | Set bottom right corner radius of the imageview. |
 | `strokeWidth`              | dimension | Set width of the stroke.                         |
 | `strokeColor`              | color     | Set stroke color (solid).                        |
 | `strokeGradientStartColor` | color     | Set stroke start color                           |
